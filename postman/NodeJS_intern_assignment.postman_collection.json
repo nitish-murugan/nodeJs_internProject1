@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "8d665ae4-90ed-45a9-bd59-20ded4fa1db0",
+		"name": "NodeJS_intern_assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48151298",
+		"_collection_link": "https://useonlyforrandomstuffs-4005373.postman.co/workspace/useonlyforrandomstuffs's-Worksp~aac674eb-1f19-440d-8167-1c4b4fb80eeb/collection/48151298-8d665ae4-90ed-45a9-bd59-20ded4fa1db0?action=share&source=collection_link&creator=48151298"
+	},
+	"item": [
+		{
+			"name": "Add school",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"DEF School\",\r\n    \"address\": \"456, ABC Street, Chennai\",\r\n    \"latitude\": 19,\r\n    \"longitude\": 90\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/addSchool",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"addSchool"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View all schools",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/schools",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"schools"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View school by ID",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/schools/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"schools",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View schools by lang and lat",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/listSchools?latitude=80&longitude=180",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"listSchools"
+					],
+					"query": [
+						{
+							"key": "latitude",
+							"value": "80"
+						},
+						{
+							"key": "longitude",
+							"value": "180"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
