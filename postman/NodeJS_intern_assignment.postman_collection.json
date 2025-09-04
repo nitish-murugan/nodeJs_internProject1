@@ -22,12 +22,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/addSchool",
-					"protocol": "http",
+					"raw": "https://nodejs-internproject1.onrender.com/addSchool",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"nodejs-internproject1",
+						"onrender",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"addSchool"
 					]
@@ -44,12 +45,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/schools",
-					"protocol": "http",
+					"raw": "https://nodejs-internproject1.onrender.com/schools",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"nodejs-internproject1",
+						"onrender",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"schools"
 					]
@@ -66,12 +68,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/schools/1",
-					"protocol": "http",
+					"raw": "https://nodejs-internproject1.onrender.com/schools/1",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"nodejs-internproject1",
+						"onrender",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"schools",
 						"1"
@@ -89,12 +92,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/listSchools?latitude=80&longitude=180",
-					"protocol": "http",
+					"raw": "https://nodejs-internproject1.onrender.com/listSchools?latitude=80&longitude=180",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"nodejs-internproject1",
+						"onrender",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"listSchools"
 					],
