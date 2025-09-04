@@ -2,6 +2,8 @@
 
 A Node.js REST API for managing school data with proximity-based sorting functionality.
 
+# View the backend Hosted URL: https://nodejs-internproject1.onrender.com
+
 ## Features
 
 - ✅ Add new schools with validation
