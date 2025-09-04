@@ -6,7 +6,7 @@ A Node.js REST API for managing school data with proximity-based sorting functio
 
 - ✅ Add new schools with validation
 - ✅ List schools sorted by proximity to user location
-- ✅ MySQL database integration
+- ✅ SQLite database integration (file-based, no server required)
 - ✅ Input validation with Joi
 - ✅ Error handling middleware
 - ✅ CORS enabled
@@ -15,7 +15,6 @@ A Node.js REST API for managing school data with proximity-based sorting functio
 ## Prerequisites
 
 - Node.js (v14 or higher)
-- MySQL (v5.7 or higher)
 - npm or yarn
 
 ## Installation
@@ -33,14 +32,9 @@ npm install
 
 3. Configure environment variables:
    - Copy `.env.example` to `.env`
-   - Update the database credentials in `.env`
+   - The database file will be created automatically at `./database/schools.db`
 
-4. Set up MySQL database:
-   - Create a MySQL database
-   - Update the database configuration in `.env`
-   - The application will automatically create the required tables
-
-5. Start the application:
+4. Start the application:
 ```bash
 # Development mode
 npm run dev
@@ -83,16 +77,16 @@ npm start
 
 ## Database Schema
 
-### Schools Table
+### Schools Table (SQLite)
 ```sql
 CREATE TABLE schools (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    address VARCHAR(500) NOT NULL,
-    latitude FLOAT NOT NULL,
-    longitude FLOAT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    address TEXT NOT NULL,
+    latitude REAL NOT NULL,
+    longitude REAL NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
@@ -100,11 +94,7 @@ CREATE TABLE schools (
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `DB_HOST` | MySQL host | localhost |
-| `DB_USER` | MySQL username | root |
-| `DB_PASSWORD` | MySQL password | - |
-| `DB_NAME` | Database name | school_management |
-| `DB_PORT` | MySQL port | 3306 |
+| `DB_FILE` | SQLite database file path | ./database/schools.db |
 | `PORT` | Server port | 3000 |
 | `NODE_ENV` | Environment | development |
 
@@ -169,14 +159,17 @@ npm run dev
 
 ### Production Deployment
 
-1. Set environment variables for production
+1. The SQLite database file is self-contained and will be created automatically
 2. Use PM2 for process management:
 ```bash
 npm install -g pm2
 pm2 start server.js --name "school-api"
 ```
 
-3. Set up reverse proxy with Nginx (optional)
+3. For platforms like Render, Heroku, or Vercel:
+   - No database setup required - SQLite file is included with your code
+   - Set environment variable: `DB_FILE=./database/schools.db`
+   - The database file will persist with your application
 
 ## License
 

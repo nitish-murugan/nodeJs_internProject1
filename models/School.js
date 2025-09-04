@@ -8,17 +8,16 @@ class School {
     async addSchool(schoolData) {
         try {
             const { name, address, latitude, longitude } = schoolData;
-            const connection = database.getConnection();
             
             const query = `
                 INSERT INTO ${this.tableName} (name, address, latitude, longitude) 
                 VALUES (?, ?, ?, ?)
             `;
             
-            const [result] = await connection.execute(query, [name, address, latitude, longitude]);
+            const result = await database.run(query, [name, address, latitude, longitude]);
             
             return {
-                id: result.insertId,
+                id: result.id,
                 name,
                 address,
                 latitude,
@@ -33,10 +32,8 @@ class School {
 
     async getAllSchools() {
         try {
-            const connection = database.getConnection();
             const query = `SELECT * FROM ${this.tableName}`;
-            
-            const [rows] = await connection.execute(query);
+            const rows = await database.all(query);
             return rows;
         } catch (error) {
             console.error('Error fetching schools:', error.message);
@@ -46,11 +43,9 @@ class School {
 
     async getSchoolById(id) {
         try {
-            const connection = database.getConnection();
             const query = `SELECT * FROM ${this.tableName} WHERE id = ?`;
-            
-            const [rows] = await connection.execute(query, [id]);
-            return rows[0] || null;
+            const row = await database.get(query, [id]);
+            return row || null;
         } catch (error) {
             console.error('Error fetching school by ID:', error.message);
             throw error;
